@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
 import images from "../assets";
+import Button from "./Button";
 
 const MenuItems = ({ isMobile, active, setActive }) => {
 	const generateLink = (i) => {
@@ -42,9 +44,31 @@ const MenuItems = ({ isMobile, active, setActive }) => {
 	);
 };
 
+const ButtonGroup = ({ setActive, router }) => {
+	const hasConnected = true;
+
+	return hasConnected ? (
+		<Button
+			btnName='Create'
+			classStyles='mx-2 rounded-xl'
+			handleClick={() => {
+				setActive("");
+				router.push("/create-nft");
+			}}
+		/>
+	) : (
+		<Button
+			btnName='Connect'
+			classStyles='mx-2 rounded-xl'
+			handleClick={() => {}}
+		/>
+	);
+};
+
 const Navbar = () => {
 	const { theme, setTheme } = useTheme();
 	const [active, setActive] = useState("Explore NFTs");
+	const router = useRouter();
 	return (
 		<nav className='flexBetween w-full fixed z-10 p-4 flex-row border-b dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1'>
 			<div className='flex flex-1 flex-row justify-start'>
@@ -94,11 +118,10 @@ const Navbar = () => {
 						<div className='h-3 w-3 absolute bg-white rounded-full ball'></div>
 					</label>
 				</div>
-			</div>
-			<div className='md:hidden flex'>
-				<ul className='list-none flexCenter flex-row'>
+				<div className='md:hidden flex'>
 					<MenuItems active={active} setActive={setActive} />
-				</ul>
+					<ButtonGroup setActive={setActive} router={router} />
+				</div>
 			</div>
 		</nav>
 	);
