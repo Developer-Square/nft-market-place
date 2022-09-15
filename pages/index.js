@@ -1,8 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { Banner, TopSellers } from "../components";
-
-import images from "../assets";
+import { Banner, TopSellers, HotBids } from "../components";
 
 const Home = () => {
 	return (
@@ -14,6 +10,7 @@ const Home = () => {
 					parentStyles='justify-start mb-6 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-3xl'
 				/>
 				<TopSellers />
+				<HotBids />
 			</div>
 		</div>
 	);

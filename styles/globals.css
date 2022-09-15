@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+    .nft-card-text {
+        @apply font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-lg
+    }
+} 
+
 .nft-gradient {
    background: linear-gradient(101.12deg, #EB1484 27.35%, #C91CC3 99.99%, #C81CC5 100%, #C81CC5 100%);
 }
