@@ -2,7 +2,7 @@ import React from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 
-import images from "../assets";
+import images from "../../assets";
 import Button from "./Button";
 
 const FooterLinks = ({ heading, items }) => (

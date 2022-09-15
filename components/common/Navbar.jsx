@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-import images from "../assets";
+import images from "../../assets";
 import Button from "./Button";
 
 const MenuItems = ({ isMobile, active, setActive }) => {
