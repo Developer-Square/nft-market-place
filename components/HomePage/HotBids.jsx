@@ -7,9 +7,7 @@ const HotBids = () => {
 	return (
 		<div className='mt-10'>
 			<div className='flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start'>
-				<h1 className='flex-1 before:first:font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold sm:mb-4'>
-					Hot BIds
-				</h1>
+				<h1 className='main-title'>Hot Bids</h1>
 				<div>SearchBar</div>
 			</div>
 			<div className='mt-3 w-full flex flex-wrap justify-start md:justify-center'>

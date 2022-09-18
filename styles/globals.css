@@ -9,6 +9,14 @@
     .nft-card-text {
         @apply font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-lg
     }
+
+    .main-title {
+        @apply flex-1 before:first:font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold sm:mb-4
+    }
+
+    .page-title {
+        @apply font-poppins dark:text-white text-nft-black-1 font-semibold text-xl
+    }
 } 
 
 .nft-gradient {
