@@ -35,7 +35,7 @@ const CreateNFT = () => {
 	);
 
 	return (
-		<div className='flex justfy-center sm:px-4 p-12'>
+		<div className='flex justify-center sm:px-4 p-12'>
 			<div className='w-3/5 md:w-full'>
 				<h1 className='main-title ml-4 xs:ml-0'>Create new NFT</h1>
 				<div className='mt-16'>
