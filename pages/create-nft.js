@@ -7,14 +7,18 @@ import { useTheme } from "next-themes";
 import { Button } from "../components";
 import images from "../assets";
 import { Input } from "../components/CreateNFT";
+import { NFTContext } from "../context/NFTContext";
 
 const CreateNFT = () => {
 	const [fileUrl, setFileUrl] = useState(null);
 	const { theme } = useTheme();
+	const { uploadToIPFS } = useContext(NFTContext);
 
-	const onDrop = () => {
-		// upload image to the ipfs
-	};
+	const onDrop = useCallback(async (acceptedFile) => {
+		const url = await uploadToIPFS(acceptedFile[0]);
+		console.log({ url });
+		setFileUrl(url);
+	}, []);
 
 	const {
 		getRootProps,
