@@ -7,8 +7,15 @@ import { MarketAddress, MarketAddressABI } from "./constants";
 import validateEnv from "../utils/validateEnv";
 const ipfsClient = require("ipfs-http-client");
 
+const fetchContract = (signerOrProvider) =>
+	new ethers.Contract(MarketAddress, MarketAddressABI, signerOrProvider);
+
 export const NFTContext = React.createContext();
 
+const subdomain = validateEnv(
+	"IPFS Project Subdomain",
+	process.env.NEXT_PUBLIC_IPFS_SUBDOMAIN
+);
 const projectId = validateEnv(
 	"IPFS Project Id",
 	process.env.NEXT_PUBLIC_IPFS_PROJECT_ID
@@ -20,7 +27,6 @@ const projectSecret = validateEnv(
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString(
 	"base64"
 )}`;
-console.log({ auth });
 
 const ipfs = ipfsClient.create({
 	host: "ipfs.infura.io",
@@ -49,6 +55,7 @@ export const NFTProvider = ({ children }) => {
 
 	useEffect(() => {
 		checkIfWalletIsConnected();
+		createSale("test", "0.025");
 	}, []);
 
 	const connectWallet = async () => {
@@ -67,9 +74,43 @@ export const NFTProvider = ({ children }) => {
 			const added = await ipfs.add({ content: file });
 			console.log({ added });
 
-			const url = `https://infura-ipfs.io/ipfs/${added.path}`;
+			const url = `https://${subdomain}/ipfs/${added.path}`;
 
 			return url;
+		} catch (error) {
+			console.log("Error uploading file to IPFS", error);
+		}
+	};
+
+	const createSale = async (url, formInputPrice, isReselling, id) => {
+		const web3Modal = new Web3Modal();
+		const connection = await web3Modal.connect();
+		const provider = new ethers.providers.Web3Provider(connection);
+		const signer = provider.getSigner();
+
+		const price = ethers.utils.parseUnits(formInputPrice, "ether");
+		const contract = fetchContract(signer);
+		console.log(contract);
+		// const listingPrice = await contract.getListingPrice();
+
+		// const transaction = await contract.createToken(url, price, {
+		// 	value: listingPrice.toString(),
+		// });
+
+		// await transaction.wait();
+	};
+
+	const createNFT = async (formInput, fileUrl, router) => {
+		const { name, description, price } = formInput;
+
+		if (!name || !description || !price || !fileUrl) return;
+		const data = JSON.stringify({ name, description, image: fileUrl });
+
+		try {
+			const added = await ipfs.add(data);
+			const url = `https://${subdomain}/ipfs/${added.path}`;
+
+			await createSale(url, price);
 		} catch (error) {
 			console.log("Error uploading file to IPFS", error);
 		}
