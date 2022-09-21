@@ -67,7 +67,7 @@ const TopSellers = () => {
 							>
 								<Image
 									src={images.left}
-									Layout='fill'
+									layout='fill'
 									objectFit='contain'
 									alt='left_arrow'
 									className={theme === "light" && "fitler invert"}
@@ -79,7 +79,7 @@ const TopSellers = () => {
 							>
 								<Image
 									src={images.right}
-									Layout='fill'
+									layout='fill'
 									objectFit='contain'
 									alt='right_arrow'
 									className={theme === "light" && "fitler invert"}
