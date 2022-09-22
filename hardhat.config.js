@@ -1,9 +1,11 @@
-const fs = require("fs");
-require("@nomicfoundation/hardhat-toolbox");
+/* eslint-disable import/no-extraneous-dependencies */
+const fs = require('fs');
+require('@nomicfoundation/hardhat-toolbox');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const privateKey = fs.readFileSync(".secret").toString().trim();
+// eslint-disable-next-line no-unused-vars
+const privateKey = fs.readFileSync('.secret').toString().trim();
 
 module.exports = {
 	networks: {
@@ -11,5 +13,5 @@ module.exports = {
 			chainId: 1337,
 		},
 	},
-	solidity: "0.8.17",
+	solidity: '0.8.17',
 };

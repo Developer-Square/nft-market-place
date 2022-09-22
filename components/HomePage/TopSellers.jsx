@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
-import Image from "next/image";
+import { useState, useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 
-import { makeId } from "../../utils/makeId";
-import CreatorCard from "./CreatorCard";
-import images from "../../assets";
+import { makeId } from '../../utils/makeId';
+import CreatorCard from './CreatorCard';
+import images from '../../assets';
 
 const TopSellers = () => {
 	const parentRef = useRef(null);
@@ -16,7 +16,7 @@ const TopSellers = () => {
 		const { current } = scrollRef;
 		const scrollAmount = window.innerWidth > 1800 ? 270 : 210;
 
-		if (direction === "left") {
+		if (direction === 'left') {
 			current.scrollLeft -= scrollAmount;
 		} else {
 			current.scrollLeft += scrollAmount;
@@ -36,18 +36,18 @@ const TopSellers = () => {
 
 	useEffect(() => {
 		isScrollable();
-		window.addEventListener("resize", isScrollable);
+		window.addEventListener('resize', isScrollable);
 
 		return () => {
-			window.removeEventListener("resize", isScrollable);
+			window.removeEventListener('resize', isScrollable);
 		};
 	});
 	return (
 		<div>
-			<h1 className='main-title'>Top Sellers</h1>
-			<div className='relative flex-1 max-w-full flex mt-3' ref={parentRef}>
+			<h1 className="main-title">Top Sellers</h1>
+			<div className="relative flex-1 max-w-full flex mt-3" ref={parentRef}>
 				<div
-					className='flex flex-row w-max overflow-x-scroll no-scrollbar select-none'
+					className="flex flex-row w-max overflow-x-scroll no-scrollbar select-none"
 					ref={scrollRef}
 				>
 					{[6, 7, 8, 9, 10].map((i) => (
@@ -62,27 +62,27 @@ const TopSellers = () => {
 					{!hideButtons && (
 						<>
 							<div
-								onClick={() => handleScroll("left")}
-								className='absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 cursor-pointer left-0'
+								onClick={() => handleScroll('left')}
+								className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 cursor-pointer left-0"
 							>
 								<Image
 									src={images.left}
-									layout='fill'
-									objectFit='contain'
-									alt='left_arrow'
-									className={theme === "light" && "fitler invert"}
+									layout="fill"
+									objectFit="contain"
+									alt="left_arrow"
+									className={theme === 'light' && 'fitler invert'}
 								/>
 							</div>
 							<div
-								onClick={() => handleScroll("right")}
-								className='absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 cursor-pointer right-0'
+								onClick={() => handleScroll('right')}
+								className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 cursor-pointer right-0"
 							>
 								<Image
 									src={images.right}
-									layout='fill'
-									objectFit='contain'
-									alt='right_arrow'
-									className={theme === "light" && "fitler invert"}
+									layout="fill"
+									objectFit="contain"
+									alt="right_arrow"
+									className={theme === 'light' && 'fitler invert'}
 								/>
 							</div>
 						</>

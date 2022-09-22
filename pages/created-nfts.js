@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react';
 
-const CreatedNFTS = () => {
-	return <div>CreatedNFTS</div>;
-};
+const CreatedNFTS = () => <div>CreatedNFTS</div>;
 
 export default CreatedNFTS;
