@@ -41,7 +41,7 @@ const ipfs = ipfsClient.create({
 
 export const NFTProvider = ({ children }) => {
 	const [currentAccount, setCurrentAccount] = useState('');
-	const nftCurrency = 'Matic';
+	const nftCurrency = 'ETH';
 
 	const checkIfWalletIsConnected = async () => {
 		if (!window.ethereum) return alert('Please install Metamask');
