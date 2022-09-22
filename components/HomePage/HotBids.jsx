@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { makeId } from '../../utils/makeId';
 import NFTCard from './NFTCard';
 
 const HotBids = ({ nfts }) => (
@@ -13,7 +12,7 @@ const HotBids = ({ nfts }) => (
 			{nfts.map((nft) => (
 				<NFTCard key={nft.tokenId} nft={nft} />
 			))}
-			{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+			{/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
 				<NFTCard
 					key={`NFT-${i}`}
 					nft={{
@@ -25,7 +24,7 @@ const HotBids = ({ nfts }) => (
 						description: 'Coll NFT on Sale',
 					}}
 				/>
-			))}
+			))} */}
 		</div>
 	</div>
 );
