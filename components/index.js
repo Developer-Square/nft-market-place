@@ -5,5 +5,15 @@ import Banner from './HomePage/Banner';
 import CreatorCard from './HomePage/CreatorCard';
 import TopSellers from './HomePage/TopSellers';
 import HotBids from './HomePage/HotBids';
+import Loader from './common/Loader';
 
-export { Navbar, Footer, Button, Banner, CreatorCard, TopSellers, HotBids };
+export {
+	Navbar,
+	Footer,
+	Button,
+	Banner,
+	CreatorCard,
+	TopSellers,
+	HotBids,
+	Loader,
+};
