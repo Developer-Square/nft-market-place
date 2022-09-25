@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Image from 'next/image';
 
-import { Banner, Loader } from '../components';
-import NFTCard from '../components/HomePage/NFTCard';
+import { Banner, Loader, NFTCard } from '../components';
 import { NFTContext } from '../context/NFTContext';
 import images from '../assets';
 import { shortenAddress } from '../utils/shortenAddress';
@@ -61,7 +60,7 @@ const MyNFTS = () => {
 					</div>
 					<div className='mt-3 w-full flex flex-wrap'>
 						{nfts.map((nft) => (
-							<NFTCard key={nft.tokenId} nft={nft} />
+							<NFTCard key={nft.tokenId} nft={nft} onProfilePage />
 						))}
 					</div>
 				</div>

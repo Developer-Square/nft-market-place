@@ -9,6 +9,7 @@ import Loader from './common/Loader';
 import Modal from './common/Modal';
 import PaymentBodyCmp from './NFTDetails/PaymentBodyCmp';
 import CustomFooter from './NFTDetails/CustomFooter';
+import NFTCard from './common/NFTCard';
 
 export {
 	Navbar,
@@ -22,4 +23,5 @@ export {
 	Modal,
 	PaymentBodyCmp,
 	CustomFooter,
+	NFTCard,
 };

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import NFTCard from './NFTCard';
+import NFTCard from '../common/NFTCard';
 
 const HotBids = ({ nfts }) => (
-	<div className="mt-10">
-		<div className="flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start">
-			<h1 className="main-title">Hot Bids</h1>
+	<div className='mt-10'>
+		<div className='flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start'>
+			<h1 className='main-title'>Hot Bids</h1>
 			<div>SearchBar</div>
 		</div>
-		<div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
+		<div className='mt-3 w-full flex flex-wrap justify-start md:justify-center'>
 			{nfts.map((nft) => (
 				<NFTCard key={nft.tokenId} nft={nft} />
 			))}
