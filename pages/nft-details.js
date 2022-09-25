@@ -1,7 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Image from 'next/image';
 
-import { Banner, Loader, Button } from '../components';
+import {
+	Banner,
+	Loader,
+	Button,
+	Modal,
+	PaymentBodyCmp,
+	CustomFooter,
+} from '../components';
 import NFTCard from '../components/HomePage/NFTCard';
 import { NFTContext } from '../context/NFTContext';
 import images from '../assets';
@@ -18,6 +25,7 @@ const NFTDetails = () => {
 		price: '',
 	});
 	const [isLoading, setIsLoading] = useState(true);
+	const [modal, setModal] = useState(false);
 	const { currentAccount, nftCurrency } = useContext(NFTContext);
 	const router = useRouter();
 
@@ -90,10 +98,19 @@ const NFTDetails = () => {
 						<Button
 							btnName={`Buy for ${nft.price} ${nftCurrency}`}
 							classStyles='mr-5 sm:mr-0 rounded-xl'
+							handleClick={() => setModal(true)}
 						/>
 					)}
 				</div>
 			</div>
+			{modal ? (
+				<Modal
+					header='Check Out'
+					body={<PaymentBodyCmp nft={nft} nftCurrency={nftCurrency} />}
+					footer={<CustomFooter handleClose={() => setModal(false)} />}
+					handleClose={() => setModal(false)}
+				/>
+			) : null}
 		</div>
 	);
 };
