@@ -26,6 +26,7 @@ const NFTDetails = () => {
 	});
 	const [isLoading, setIsLoading] = useState(true);
 	const [modal, setModal] = useState(false);
+	const [successModal, setSuccessModal] = useState(false);
 	const { currentAccount, nftCurrency } = useContext(NFTContext);
 	const router = useRouter();
 
@@ -107,8 +108,46 @@ const NFTDetails = () => {
 				<Modal
 					header='Check Out'
 					body={<PaymentBodyCmp nft={nft} nftCurrency={nftCurrency} />}
-					footer={<CustomFooter handleClose={() => setModal(false)} />}
+					footer={
+						<CustomFooter
+							setSuccessModal={setSuccessModal}
+							nft={nft}
+							handleClose={() => setModal(false)}
+						/>
+					}
 					handleClose={() => setModal(false)}
+				/>
+			) : null}
+			{successModal ? (
+				<Modal
+					header='Payment Successful'
+					body={
+						<div
+							className='flexCenter flex-col text-center'
+							onClick={() => setSuccessModal(false)}
+						>
+							<div className='relative w-52 h-52'>
+								<Image src={nft.image} objectFit='cover' layout='fill' />
+							</div>
+							<p className='font=[oppins dark:text-white text-nft-black-q font-normal text-sm minlg:text-xl mt-10'>
+								You successfully purchases{' '}
+								<span className='font-semibold'>{nft.name}</span> from{' '}
+								<span className='font-semibold'>
+									{shortenAddress(nft.seller)}
+								</span>
+							</p>
+						</div>
+					}
+					footer={
+						<div className='flexCenter flex-col'>
+							<Button
+								btnName='Check it out'
+								classStyles='sm:mb-5 sm:mr-0 rounded-xl'
+								handleClick={() => router.push('/my-nfts')}
+							/>
+						</div>
+					}
+					handleClose={() => setSuccessModal(false)}
 				/>
 			) : null}
 		</div>
