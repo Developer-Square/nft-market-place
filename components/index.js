@@ -3,7 +3,7 @@ import Footer from './common/Footer';
 import Button from './common/Button';
 import Banner from './HomePage/Banner';
 import CreatorCard from './HomePage/CreatorCard';
-import TopSellers from './HomePage/TopSellers';
+import TopCreators from './HomePage/TopCreators';
 import HotBids from './HomePage/HotBids';
 import Loader from './common/Loader';
 import Modal from './common/Modal';
@@ -17,7 +17,7 @@ export {
 	Button,
 	Banner,
 	CreatorCard,
-	TopSellers,
+	TopCreators,
 	HotBids,
 	Loader,
 	Modal,

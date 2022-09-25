@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from '../common/Loader';
 
 import NFTCard from '../common/NFTCard';
 
@@ -9,9 +10,11 @@ const HotBids = ({ nfts }) => (
 			<div>SearchBar</div>
 		</div>
 		<div className='mt-3 w-full flex flex-wrap justify-start md:justify-center'>
-			{nfts.map((nft) => (
-				<NFTCard key={nft.tokenId} nft={nft} />
-			))}
+			{nfts.length ? (
+				nfts.map((nft) => <NFTCard key={nft.tokenId} nft={nft} />)
+			) : (
+				<Loader />
+			)}
 			{/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
 				<NFTCard
 					key={`NFT-${i}`}
