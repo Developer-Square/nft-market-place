@@ -5,14 +5,16 @@ import { getBestCreators } from '../utils/getBestCreators';
 
 const Home = () => {
 	const [nfts, setNfts] = useState([]);
+	const [nftCopy, setNftCopy] = useState([]);
 	const { fetchNFTs } = useContext(NFTContext);
 	useEffect(() => {
 		fetchNFTs().then((items) => {
 			setNfts(items);
+			setNftCopy(items);
 		});
 	}, []);
 
-	const bestCreators = useMemo(() => getBestCreators(nfts), [nfts]);
+	const bestCreators = useMemo(() => getBestCreators(nftCopy), [nfts]);
 
 	return (
 		<div className='flex justify-center sm:px-4 p-12'>
@@ -23,7 +25,7 @@ const Home = () => {
 					parentStyles='justify-start mb-6 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-3xl'
 				/>
 				<TopCreators bestCreators={bestCreators} />
-				<HotBids nfts={nfts} />
+				<HotBids nfts={nfts} setNfts={setNfts} nftCopy={nftCopy} />
 			</div>
 		</div>
 	);

@@ -95,11 +95,15 @@ const NFTDetails = () => {
 							You cannot buy your own NFT
 						</p>
 					) : (
-						<Button
-							btnName={`Buy for ${nft.price} ${nftCurrency}`}
-							classStyles='mr-5 sm:mr-0 sm:mb-5 rounded-xl'
-							handleClick={() => setModal(true)}
-						/>
+						<>
+							{currentAccount !== nft.owner.toLowerCase() ? (
+								<Button
+									btnName={`Buy for ${nft.price} ${nftCurrency}`}
+									classStyles='mr-5 sm:mr-0 sm:mb-5 rounded-xl'
+									handleClick={() => setModal(true)}
+								/>
+							) : null}
+						</>
 					)}
 
 					{currentAccount === nft.owner.toLowerCase() ? (
