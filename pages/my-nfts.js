@@ -10,11 +10,13 @@ const MyNFTS = () => {
 	const [nfts, setNfts] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [activeSelect, setActiveSelect] = useState('Recently Added');
+	const [nftCopy, setNftCopy] = useState([]);
 	const { fetchMyNFTSOrListedNFTS, currentAccount } = useContext(NFTContext);
 
 	useEffect(() => {
 		fetchMyNFTSOrListedNFTS().then((items) => {
 			setNfts(items);
+			setNftCopy(items);
 			setIsLoading(false);
 		});
 	}, []);
@@ -27,7 +29,13 @@ const MyNFTS = () => {
 		if (filteredNFTs.length) {
 			setNfts(filteredNFTs);
 		} else {
-			// Re-show all nfts.
+			setNfts(nftCopy);
+		}
+	};
+
+	const onClearSearch = () => {
+		if (nfts.length && nftCopy.length) {
+			setNfts(nftCopy);
 		}
 	};
 
@@ -60,7 +68,7 @@ const MyNFTS = () => {
 					</p>
 				</div>
 			</div>
-			{!isLoading && !nfts.length ? (
+			{!isLoading && !nfts.length && !nftCopy.length ? (
 				<div className='flexCenter sm:p-4 p-16'>
 					<h1 className='font-poppins dark:text-white text-nft-black-1 font-extrabold text-3xl'>
 						No NFTs Owned
@@ -73,7 +81,7 @@ const MyNFTS = () => {
 							activeSelect={activeSelect}
 							setActiveSelect={setActiveSelect}
 							handleSearch={onHandleSearch}
-							// clearSearch={onClearSearch}
+							clearSearch={onClearSearch}
 						/>
 					</div>
 					<div className='mt-3 w-full flex flex-wrap'>

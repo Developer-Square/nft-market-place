@@ -26,6 +26,8 @@ const SearchBar = ({
 	useEffect(() => {
 		if (search.length) {
 			handleSearch(search);
+		} else {
+			clearSearch();
 		}
 	}, [search]);
 
