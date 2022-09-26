@@ -10,6 +10,7 @@ import Modal from './common/Modal';
 import PaymentBodyCmp from './NFTDetails/PaymentBodyCmp';
 import CustomFooter from './NFTDetails/CustomFooter';
 import NFTCard from './common/NFTCard';
+import SearchBar from './common/SearchBar';
 
 export {
 	Navbar,
@@ -24,4 +25,5 @@ export {
 	PaymentBodyCmp,
 	CustomFooter,
 	NFTCard,
+	SearchBar,
 };
