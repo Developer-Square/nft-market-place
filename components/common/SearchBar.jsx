@@ -55,7 +55,7 @@ const SearchBar = ({
 				onClick={() => setToggle((prevToggle) => !prevToggle)}
 			>
 				<p className='font-poppins dark:text-white text-nft-black-1 font-normal text-xs'>
-					Recently Listed
+					{activeSelect}
 				</p>
 				<Image
 					src={images.arrow}
@@ -70,11 +70,12 @@ const SearchBar = ({
 						{[
 							'Recently Added',
 							'Price (low to high)',
-							'Pirce (high to low',
+							'Price (high to low)',
 						].map((item, i) => (
 							<p
 								key={i}
 								className='font-poppins dark:text-white text-nft-black-1 font-normal text-xs my-3 cursor-pointer'
+								onClick={() => setActiveSelect(item)}
 							>
 								{item}
 							</p>
