@@ -40,66 +40,72 @@ const CreateNFT = () => {
 	${isDragAccept && 'border-file-accept'}
 	${isDragReject && 'border-file-reject'}
 	`,
-		[isDragActive, isDragAccept, isDragReject],
+		[isDragActive, isDragAccept, isDragReject]
 	);
 
 	return (
-		<div className="flex justify-center sm:px-4 p-12">
-			<div className="w-3/5 md:w-full">
-				<h1 className="main-title ml-4 xs:ml-0">Create new NFT</h1>
-				<div className="mt-16">
-					<p className="page-title">Upload File</p>
-					<div className="mt-4">
+		<div className='flex justify-center sm:px-4 p-12'>
+			<div className='w-3/5 md:w-full'>
+				<h1 className='main-title ml-4 xs:ml-0'>Create new NFT</h1>
+				<div className='mt-16'>
+					<p className='page-title'>Upload File</p>
+					<div className='mt-4'>
 						<div {...getRootProps()} className={fileStyle}>
 							<input {...getInputProps()} />
-							<div className="flexCenter flex-col text-center">
-								<p className="page-title">JPG, PNG, GIF, SVG, WEBM Max 100mb</p>
-								<div className="my-12 w-full flex justify-center">
+							<div className='flexCenter flex-col text-center'>
+								<p className='page-title'>JPG, PNG, GIF, SVG, WEBM Max 100mb</p>
+								<div className='my-12 w-full flex justify-center'>
 									<Image
 										src={images.upload}
 										width={100}
 										height={100}
-										objectFit="contain"
-										alt="file upload"
-										className={theme === 'light' && 'filter invert'}
+										objectFit='contain'
+										alt='file upload'
+										className={theme === 'light' ? 'filter invert' : ''}
 									/>
 								</div>
-								<p className="page-title text-sm">Drag and Drop File</p>
-								<p className="page-title text-sm mt-2">
+								<p className='page-title text-sm'>Drag and Drop File</p>
+								<p className='page-title text-sm mt-2'>
 									or Browse media on your computer
 								</p>
 							</div>
 							{fileUrl && (
 								<aside>
 									<div>
-										<img src={fileUrl} alt="asset_file" />
+										<img src={fileUrl} alt='asset_file' />
 									</div>
 								</aside>
 							)}
 						</div>
 					</div>
 					<Input
-						inputType="text"
-						title="Name"
-						placeholder="NFT Name"
-						handleClick={(e) => setformInput({ ...formInput, name: e.target.value })}
+						inputType='text'
+						title='Name'
+						placeholder='NFT Name'
+						handleClick={(e) =>
+							setformInput({ ...formInput, name: e.target.value })
+						}
 					/>
 					<Input
-						inputType="textarea"
-						title="Description"
-						placeholder="NFT Description"
-						handleClick={(e) => setformInput({ ...formInput, description: e.target.value })}
+						inputType='textarea'
+						title='Description'
+						placeholder='NFT Description'
+						handleClick={(e) =>
+							setformInput({ ...formInput, description: e.target.value })
+						}
 					/>
 					<Input
-						inputType="number"
-						title="Price"
-						placeholder="NFT Price"
-						handleClick={(e) => setformInput({ ...formInput, price: e.target.value })}
+						inputType='number'
+						title='Price'
+						placeholder='NFT Price'
+						handleClick={(e) =>
+							setformInput({ ...formInput, price: e.target.value })
+						}
 					/>
-					<div className="mt-7 w-full flex justfy-end">
+					<div className='mt-7 w-full flex justfy-end'>
 						<Button
-							btnName="Create Nft"
-							classStyles="rounded-xl"
+							btnName='Create Nft'
+							classStyles='rounded-xl'
 							handleClick={() => createNFT(formInput, fileUrl, router)}
 						/>
 					</div>
