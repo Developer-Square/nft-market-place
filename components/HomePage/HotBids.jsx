@@ -47,7 +47,7 @@ const HotBids = ({ nfts, setNfts, nftCopy }) => {
 	return (
 		<div className='mt-10'>
 			<div className='flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start'>
-				<h1 className='main-title'>Hot Bids</h1>
+				<h1 className='main-title'>Hot NFTs</h1>
 				<div className='flex-2 sm:w-full flex flex-row sm:flex-col'>
 					<SearchBar
 						activeSelect={activeSelect}
