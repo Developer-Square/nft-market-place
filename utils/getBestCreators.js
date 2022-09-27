@@ -16,12 +16,11 @@ export const getBestCreators = (nfts) => {
 
 			finalized.push({ seller, sum });
 		});
-		finalized.sort((a, b) => {
+		return finalized.sort((a, b) => {
 			if (a['sum'] > b['sum']) return -1;
 			if (a['sum'] < b['sum']) return 1;
 			return 0;
 		});
-		return finalized;
 	}
 };
 
