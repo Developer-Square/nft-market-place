@@ -117,14 +117,15 @@ const Navbar = () => {
 						}}
 					>
 						<Image
-							src={images.logo02}
+							src={images.logo_2}
 							objectFit='contain'
-							width={32}
-							height={32}
+							width={38}
+							height={38}
+							className='rounded-full'
 							alt='logo'
 						/>
 						<p className='dark:text-white text-nft-black-1 font-semibold text-lg ml-1'>
-							CryptoKet
+							NFTSwap
 						</p>
 					</div>
 				</Link>
