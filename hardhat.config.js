@@ -24,10 +24,8 @@ module.exports = {
 	networks: {
 		hardhat: {},
 		matic: {
-			url: 'https://polygon-mainnet.g.alchemy.com/v2/QZqTLJ1MxHT6uTnKUHYMBNkjDefnIZVl',
-			accounts: [
-				'611c70f12fa1cb92b65b86cc01ed9f09a6458b4e2ebdd8ea00466f67473037a0',
-			],
+			url: process.env.NEXT_PUBLIC_ALCHEMY_API_URL,
+			accounts: [process.env.NEXT_PUBLIC_WALLET_PRIVATE_KEY],
 		},
 	},
 	solidity: {
