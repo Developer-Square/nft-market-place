@@ -26,7 +26,7 @@ const NFTDetails = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [modal, setModal] = useState(false);
 	const [successModal, setSuccessModal] = useState(false);
-	const { currentAccount, nftCurrency } = useContext(NFTContext);
+	const { currentAccount, nftCurrency, isNFTLoading } = useContext(NFTContext);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -160,6 +160,20 @@ const NFTDetails = () => {
 								classStyles='sm:mb-5 sm:mr-0 rounded-xl'
 								handleClick={() => router.push('/my-nfts')}
 							/>
+						</div>
+					}
+					handleClose={() => setSuccessModal(false)}
+				/>
+			) : null}
+
+			{isNFTLoading ? (
+				<Modal
+					header='Buying NFT...'
+					body={
+						<div className='flexCenter flex-col text-center'>
+							<div className='relative w-52 h-52'>
+								<Loader />
+							</div>
 						</div>
 					}
 					handleClose={() => setSuccessModal(false)}

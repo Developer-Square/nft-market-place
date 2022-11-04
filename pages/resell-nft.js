@@ -8,25 +8,23 @@ import { shortenAddress } from '../utils/shortenAddress';
 import Input from '../components/CreateNFT/Input';
 
 const ResellNFT = () => {
-	const { createSale } = useContext(NFTContext);
+	const { createSale, isNFTLoading } = useContext(NFTContext);
 	const router = useRouter();
 	const [price, setPrice] = useState('');
 	const [image, setImage] = useState('');
-	const [isLoading, setIsLoading] = useState(true);
 	const { tokenId, tokenURI } = router.query;
 
 	const fetchNFT = async () => {
 		const { data } = await axios.get(tokenURI);
 		setImage(data.image);
 		setPrice(data.price);
-		setIsLoading(false);
 	};
 
 	useEffect(() => {
 		if (tokenURI) fetchNFT();
 	}, [tokenURI]);
 
-	if (isLoading) {
+	if (isNFTLoading) {
 		return (
 			<div className='flexStart min-h-screen'>
 				<Loader />

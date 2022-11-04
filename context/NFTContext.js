@@ -26,6 +26,12 @@ const projectSecret = validateEnv(
 	'IPFS Project API secret key',
 	process.env.NEXT_PUBLIC_IPFS_API_KEY
 );
+
+const rpcUrl = validateEnv(
+	'Alchemy Polygon Testnet RPC url',
+	process.env.NEXT_PUBLIC_ALCHEMY_API_URL
+);
+
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString(
 	'base64'
 )}`;
@@ -41,7 +47,8 @@ const ipfs = ipfsClient.create({
 
 export const NFTProvider = ({ children }) => {
 	const [currentAccount, setCurrentAccount] = useState('');
-	const nftCurrency = 'ETH';
+	const [isNFTLoading, setIsNFTLoading] = useState(false);
+	const nftCurrency = 'MATIC';
 
 	const checkIfWalletIsConnected = async () => {
 		if (!window.ethereum) return alert('Please install Metamask');
@@ -73,7 +80,6 @@ export const NFTProvider = ({ children }) => {
 	const uploadToIPFS = async (file) => {
 		try {
 			const added = await ipfs.add({ content: file });
-			console.log({ added });
 
 			const url = `https://${subdomain}/ipfs/${added.path}`;
 
@@ -101,6 +107,7 @@ export const NFTProvider = ({ children }) => {
 					value: listingPrice.toString(),
 			  });
 
+		setIsNFTLoading(true);
 		await transaction.wait();
 	};
 
@@ -122,7 +129,9 @@ export const NFTProvider = ({ children }) => {
 	};
 
 	const fetchNFTs = async () => {
-		const provider = new ethers.providers.JsonRpcProvider();
+		setIsNFTLoading(false);
+
+		const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
 		const contract = fetchContract(provider);
 
 		const data = await contract.fetchMarketItems();
@@ -154,6 +163,8 @@ export const NFTProvider = ({ children }) => {
 	};
 
 	const fetchMyNFTSOrListedNFTS = async (type) => {
+		setIsNFTLoading(false);
+
 		const web3Modal = new Web3Modal();
 		const connection = await web3Modal.connect();
 		const provider = new ethers.providers.Web3Provider(connection);
@@ -206,7 +217,9 @@ export const NFTProvider = ({ children }) => {
 			value: price,
 		});
 
+		setIsNFTLoading(true);
 		transaction.wait();
+		setIsNFTLoading(false);
 	};
 
 	return (
@@ -221,6 +234,7 @@ export const NFTProvider = ({ children }) => {
 				fetchMyNFTSOrListedNFTS,
 				buyNFT,
 				createSale,
+				isNFTLoading,
 			}}
 		>
 			{children}

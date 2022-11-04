@@ -7,7 +7,8 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 import "hardhat/console.sol";
 
-contract NFTMarketplace is ERC721URIStorage {
+// Author: ryann254
+contract NFTMarketplace2 is ERC721URIStorage {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIds;
@@ -35,7 +36,7 @@ contract NFTMarketplace is ERC721URIStorage {
         bool sold
     );
 
-    constructor() ERC721("Metaverse Tokens", "METT") {
+    constructor() ERC721("Ryan Tokens", "RATT") {
         owner = payable(msg.sender);
     }
 
