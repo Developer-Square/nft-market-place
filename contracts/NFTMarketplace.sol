@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "hardhat/console.sol";
 
 // Author: ryann254
-contract NFTMarketplace2 is ERC721URIStorage {
+contract NFTMarketplace3 is ERC721URIStorage {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIds;
@@ -52,11 +52,10 @@ contract NFTMarketplace2 is ERC721URIStorage {
         return listingPrice;
     }
 
-    function createToken(string memory tokenURI, uint256 price)
-        public
-        payable
-        returns (uint256)
-    {
+    function createToken(
+        string memory tokenURI,
+        uint256 price
+    ) public payable returns (uint256) {
         _tokenIds.increment();
 
         uint256 newTokenId = _tokenIds.current();

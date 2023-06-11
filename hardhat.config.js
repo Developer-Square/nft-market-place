@@ -1,22 +1,28 @@
-/* eslint-disable import/no-extraneous-dependencies */
-// const fs = require('fs');
-// require('@nomicfoundation/hardhat-toolbox');
+// Development Configuration
+/**
+ * @type import('hardhat/config').HardhatUserConfig
+ */
 
-/** @type import('hardhat/config').HardhatUserConfig */
+// require('dotenv').config();
+// require('@nomiclabs/hardhat-ethers');
 
-// eslint-disable-next-line no-unused-vars
-// const privateKey = fs.readFileSync('.secret').toString().trim();
+// const { NEXT_PUBLIC_ALCHEMY_TEST_URL, NEXT_PUBLIC_WALLET_PRIVATE_KEY } =
+// 	process.env;
 
 // module.exports = {
+// 	solidity: '0.8.17',
+// 	defaultNetwork: 'goerli',
 // 	networks: {
-// 		hardhat: {
-// 			chainId: 1337,
+// 		hardhat: {},
+// 		goerli: {
+// 			url: NEXT_PUBLIC_ALCHEMY_TEST_URL,
+// 			accounts: [`0x${NEXT_PUBLIC_WALLET_PRIVATE_KEY}`],
 // 		},
 // 	},
-// 	solidity: '0.8.17',
 // };
 
 // Production Configuration
+require('dotenv').config();
 require('@nomiclabs/hardhat-ethers');
 
 module.exports = {
